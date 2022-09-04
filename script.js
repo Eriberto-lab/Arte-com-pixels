@@ -3,6 +3,7 @@
   let yellow = document.querySelector('.yellow')
   let red = document.querySelector('.red')
   let purple = document.querySelector('.purple')
+  let draw = false
 
 
 function generateColor() {
@@ -47,7 +48,7 @@ saveColor()
 let pixelBoard = document.querySelector('#pixel-board');
 
 
-   
+let selected = document.querySelector('.selected');
 
 function creatNewDiv (classes) {
 
@@ -55,15 +56,28 @@ function creatNewDiv (classes) {
     novaDiv.className = classes
     pixelBoard.appendChild(novaDiv)
 
-    return novaDiv
+
+
+    novaDiv.addEventListener('mouseover', function(){
+      if(!draw) return
+      div.style.backgroundColor = selected.value
+  })
+  novaDiv.addEventListener('mousedown', function(){
+    novaDiv.style.backgroundColor = selected.value
+  })
+
+    
+
 
 }
-
-
 
 for (index = 0; index < 25; index += 1){
-    creatNewDiv('pixel')
+  creatNewDiv('pixel')
 }
+
+  
+
+
 
 
 
