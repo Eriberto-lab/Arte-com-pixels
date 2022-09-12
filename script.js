@@ -10,6 +10,7 @@
   let reset = document.getElementById('clear-board')
   let pixel = document.getElementsByClassName('pixel')
 
+  
 
 
 function generateColor() {
@@ -27,12 +28,17 @@ function generateColor() {
   
   let cores = [];
 
+  if (cores.length === 0){
+    cores = ['#000000','#FFFF00','#FF0000','#800080']   
+  }
+
 function geraCoresAleatorias(){
   cores.push(document.querySelector('.black').style.backgroundColor = '#000000') 
-  cores.push(document.querySelector('.yellow').style.backgroundColor = generateColor()) 
-  cores.push(document.querySelector('.red').style.backgroundColor = generateColor())
-  cores.push(document.querySelector('.purple').style.backgroundColor = generateColor())
-  
+  cores[1] = document.querySelector('.yellow').style.backgroundColor = generateColor()
+  //cores.push(document.querySelector('.red').style.backgroundColor = generateColor())
+  cores[2] = document.querySelector('.red').style.backgroundColor = generateColor()
+  //cores.push(document.querySelector('.purple').style.backgroundColor = generateColor())
+  cores[3] = document.querySelector('.purple').style.backgroundColor = generateColor()
   
 
     return cores;
@@ -53,7 +59,7 @@ for(let index = 0; index < cores.length; index += 1){
   myArray[index] = cores[index]
 }
 
-localStorage.setItem('colorPalette',JSON.stringify(myArray))
+ localStorage.setItem('colorPalette',JSON.stringify(myArray))
 
 
 
@@ -61,16 +67,21 @@ localStorage.setItem('colorPalette',JSON.stringify(myArray))
 
 let salvo = localStorage.getItem('colorPalette');
 
-if (salvo){
-  salvo = JSON.parse(salvo)
-  for(let index = 0; index < salvo.length; index += 1){
-    
-    black.style.backgroundColor  = salvo[0]
-    yellow.style.backgroundColor  = salvo[1]
-    red.style.backgroundColor  = salvo[2]
-    purple.style.backgroundColor  = salvo[3]
-  }
+function restoreColors (){
+
+  if (salvo){
+    salvo = JSON.parse(salvo)
+     for(let index = 0; index < salvo.length; index += 1){
+        
+        black.style.backgroundColor  = salvo[0]
+        yellow.style.backgroundColor  = salvo[1]
+        red.style.backgroundColor  = salvo[2]
+        purple.style.backgroundColor  = salvo[3]
+     }
+    }
 }
+
+
 
 
 
@@ -122,12 +133,10 @@ for (index = 0; index < 25; index += 1){
 
 
 
-let defaultColors = ['(255,0,0)', '255,0,0', '128,0,128']
-
-
 reset.addEventListener('click', function(){for(let index = 0; index < pixel.length; index += 1){pixel[index].style.backgroundColor  = '#FFFFFF'}
 })
 
+window.onload = restoreColors()
 
 
 
