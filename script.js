@@ -26,21 +26,52 @@ function generateColor() {
   
   
   let cores = [];
+
 function geraCoresAleatorias(){
-   
+  cores.push(document.querySelector('.black').style.backgroundColor = '#000000') 
   cores.push(document.querySelector('.yellow').style.backgroundColor = generateColor()) 
   cores.push(document.querySelector('.red').style.backgroundColor = generateColor())
   cores.push(document.querySelector('.purple').style.backgroundColor = generateColor())
+  
+  
 
     return cores;
 }
 
 
 button.addEventListener('click', geraCoresAleatorias);
+button.addEventListener('click', savePalette);
 
-//localStorage.setItem('colorPalette', JSON.stringify(geraCoresAleatorias()));
-localStorage.colorPalette = JSON.stringify(geraCoresAleatorias())
-let storage =  JSON.parse(localStorage.getItem('colorPalette')) 
+
+
+
+
+function savePalette (){
+myArray = []
+
+for(let index = 0; index < cores.length; index += 1){
+  myArray[index] = cores[index]
+}
+
+localStorage.setItem('colorPalette',JSON.stringify(myArray))
+
+
+
+}
+
+let salvo = localStorage.getItem('colorPalette');
+
+if (salvo){
+  salvo = JSON.parse(salvo)
+  for(let index = 0; index < salvo.length; index += 1){
+    
+    black.style.backgroundColor  = salvo[0]
+    yellow.style.backgroundColor  = salvo[1]
+    red.style.backgroundColor  = salvo[2]
+    purple.style.backgroundColor  = salvo[3]
+  }
+}
+
 
 
 
@@ -73,21 +104,21 @@ for (index = 0; index < 25; index += 1){
   creatNewDiv('pixel')
 }
 
-function selectorOfColor (){
+// function selectorOfColor (){
 
   
-  black.addEventListener('click', function(){selected.value = black.value})
+  black.addEventListener('click', function(){selected.value = cores[0]})
  
-   yellow.addEventListener('click', function(){selected.value = cores[0]})
+   yellow.addEventListener('click', function(){selected.value = cores[1]})
  
-   red.addEventListener('click', function(){selected.value = cores[1]})
+   red.addEventListener('click', function(){selected.value = cores[2]})
 
-   purple.addEventListener('click', function(){selected.value = cores[2]})
+   purple.addEventListener('click', function(){selected.value = cores[3]})
 
   
-}
+//}
 
-selectorOfColor ()
+//selectorOfColor ()
 
 
 
