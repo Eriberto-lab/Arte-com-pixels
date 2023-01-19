@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
     
 }
 html, body {
@@ -32,17 +33,29 @@ html, body {
 }
 
 body{
-    background-color: rgb(97, 202, 206);
+    background-color: #cfffca;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+h1{
+    margin-bottom: 50px;
+}
+
+#button-random-color{
+margin-left: 10px;
+padding: 4px;
+background-color: #cfffca;
+
+}
+
+
 .navbar, #pixel-board{
-    background-color: black;
+    background-color: #77dd77;
     width: 200px;
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 .navbar {
